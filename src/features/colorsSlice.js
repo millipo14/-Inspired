@@ -6,21 +6,16 @@ export const fetchColors = createAsyncThunk(
     "colors/fetchColors",
     async () => {
         const response = await fetch(COLORS_URL);
-        const data = await response.json()
-        console.log("Цвета - ", data)
-        return data
+        return await response.json()
     }
 )
 
 const colorsSlice = createSlice({
     name: 'colors',
     initialState: {
-        colors: {},
+        colorList: [],
         status: "idle",
         error: null
-    },
-    reducers: {
-        //
     },
     extraReducers: (builder) => {
         builder
@@ -29,12 +24,12 @@ const colorsSlice = createSlice({
             })
             .addCase(fetchColors.fulfilled, (state, action) => {
                 state.status = 'success';
-                state.colors = action.payload;
+                state.colorList = action.payload;
             })
             .addCase(fetchColors.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
-            })
+            });
     }
 });
 

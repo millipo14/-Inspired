@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom'
 import { setActiveGender } from "../../features/navigationSlice"
 import { useSelector } from 'react-redux'
 
-export const Footer = ({ list }) => {
+export const Footer = () => {
     const dispatch = useDispatch();
     const location = useLocation();
     const gender = location.pathname.split('/')[1] || 'women';
