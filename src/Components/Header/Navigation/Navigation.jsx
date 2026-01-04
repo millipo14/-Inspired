@@ -1,26 +1,38 @@
 import { Gender } from "./Gender/Gender"
 import { Category } from "./Category/Category"
 import { Container } from "../../Layout/Container/Container"
-import { useDispatch } from "react-redux"
-import { useEffect } from "react"
-import { useLocation } from 'react-router-dom'
-import { setActiveGender } from "../../../features/navigationSlice"
+// import { useDispatch } from "react-redux"
+// import { useEffect } from "react"
+// import { useLocation } from 'react-router-dom'
+// import { setActiveGender } from "../../../features/navigationSlice" 
 
-export const Navigation = () => {
-    const dispatch = useDispatch();
-    const location = useLocation();
-    const gender = location.pathname.split('/')[1] || 'women';
+export const Navigation = () => (
+    <nav>
+        <Container>
+            <Gender />
+            <Category />
+        </Container>
+    </nav>
+)
 
-    useEffect(() => {
-        dispatch(setActiveGender(gender));
-    }, [gender, dispatch])
 
-    return (
-        <nav>
-            <Container>
-                <Gender />
-                <Category/>
-            </Container>
-        </nav>
-    )
-}
+//  было в первом варианте, при других роутах в app.jsx
+//
+// export const Navigation = () => {
+//     const dispatch = useDispatch();
+//     const location = useLocation();
+//     const gender = location.pathname.split('/')[1] || 'women';
+
+//     useEffect(() => {
+//         dispatch(setActiveGender(gender));
+//     }, [gender, dispatch])
+
+//     return (
+//         <nav>
+//             <Container>
+//                 <Gender />
+//                 <Category />
+//             </Container>
+//         </nav>
+//     )
+// }

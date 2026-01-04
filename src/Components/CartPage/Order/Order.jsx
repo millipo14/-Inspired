@@ -1,0 +1,7 @@
+import s from './Order.module.scss'
+
+export const Order = () => {
+    return (
+        <div>   ORder</div>
+    )
+}
